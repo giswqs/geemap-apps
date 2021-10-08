@@ -9,6 +9,7 @@ def app():
         """
     This site (<https://gishub.org/geemap-apps>) demostrates how to build a multi-page interactive web app using [streamlit](https://streamlit.io), [geemap](https://geemap.org), and [Google Earth Engine](https://earthengine.google.com).
     You can deploy the app on various platforms, such as [share.streamlit.io](https://share.streamlit.io) or [Heroku](https://heroku.com).
+    Make sure you set `EARTHENGINE_TOKEN='your-token'` as an environment variable.
     """
     )
 
