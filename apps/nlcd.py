@@ -2,7 +2,19 @@ import ee
 import streamlit as st
 import geemap.foliumap as geemap
 
+# Get an NLCD image by year.
+def getNLCD(year):
+    # Import the NLCD collection.
+    dataset = ee.ImageCollection("USGS/NLCD_RELEASES/2016_REL")
 
+    # Filter the collection by year.
+    nlcd = dataset.filter(ee.Filter.eq("system:index", year)).first()
+
+    # Select the land cover band.
+    landcover = nlcd.select("landcover")
+    return landcover
+
+# The main app.
 def app():
 
     st.header("National Land Cover Database (NLCD)")
@@ -15,18 +27,6 @@ def app():
 
     # Select the seven NLCD epoches after 2000.
     years = ["2001", "2004", "2006", "2008", "2011", "2013", "2016"]
-
-    # Get an NLCD image by year.
-    def getNLCD(year):
-        # Import the NLCD collection.
-        dataset = ee.ImageCollection("USGS/NLCD_RELEASES/2016_REL")
-
-        # Filter the collection by year.
-        nlcd = dataset.filter(ee.Filter.eq("system:index", year)).first()
-
-        # Select the land cover band.
-        landcover = nlcd.select("landcover")
-        return landcover
 
     # Add a dropdown list and checkbox to the second column.
     with row1_col2:
