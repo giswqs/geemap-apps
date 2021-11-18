@@ -40,7 +40,7 @@ def app():
 
         if add_legend:
             Map.add_legend(
-                legend_title="NLCD Land Cover Classification", builtin_legend="NLCD"
+                title="NLCD Land Cover Classification", builtin_legend="NLCD"
             )
         with row1_col1:
             Map.to_streamlit(height=600)
