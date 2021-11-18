@@ -7,10 +7,10 @@ def app():
 
     st.header("National Land Cover Database (NLCD)")
 
+    # Create a layout containing two columns, one for the map and one for the layer dropdown list.
     row1_col1, row1_col2 = st.columns([3, 1])
-    width = 950
-    height = 600
 
+    # Create an inteactive map
     Map = geemap.Map()
 
     # Select the seven NLCD epoches after 2000.
@@ -28,10 +28,12 @@ def app():
         landcover = nlcd.select("landcover")
         return landcover
 
+    # Add a dropdown list and checkbox to the second column.
     with row1_col2:
         selected_year = st.multiselect("Select a year", years)
         add_legend = st.checkbox("Show legend")
 
+    # Add selected NLCD image to the map based on the selected year.
     if selected_year:
         for year in selected_year:
             Map.addLayer(getNLCD(year), {}, "NLCD " + year)
@@ -41,8 +43,8 @@ def app():
                 legend_title="NLCD Land Cover Classification", builtin_legend="NLCD"
             )
         with row1_col1:
-            Map.to_streamlit(width=width, height=height)
+            Map.to_streamlit(height=600)
 
     else:
         with row1_col1:
-            Map.to_streamlit(width=width, height=height)
+            Map.to_streamlit(height=600)
