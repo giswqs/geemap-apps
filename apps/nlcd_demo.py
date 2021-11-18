@@ -22,10 +22,10 @@ def app():
     # Create a layout containing two columns, one for the map and one for the layer dropdown list.
     row1_col1, row1_col2 = st.columns([3, 1])
 
-    # Create an inteactive map
+    # Create an interactive map
     Map = geemap.Map()
 
-    # Select the seven NLCD epoches after 2000.
+    # Select the seven NLCD epochs after 2000.
     years = ["2001", "2004", "2006", "2008", "2011", "2013", "2016"]
 
     # Add a dropdown list and checkbox to the second column.
