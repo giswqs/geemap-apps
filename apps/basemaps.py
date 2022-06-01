@@ -5,7 +5,7 @@ import geemap.foliumap as geemap
 def app():
     st.title("Change basemaps")
 
-    keys = list(geemap.ee_basemaps.keys())[1:]
+    keys = list(geemap.basemaps.keys())[1:]
 
     basemap = st.selectbox("Select a basemap", keys)
 
